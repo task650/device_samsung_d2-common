@@ -68,3 +68,6 @@ TARGET_NO_INITLOGO := true
 # Use Audience A2220 chip
 BOARD_HAVE_AUDIENCE_A2220 := true
 
+# Suspend in Charge mode
+BOARD_ALLOW_SUSPEND_IN_CHARGER := true
+
