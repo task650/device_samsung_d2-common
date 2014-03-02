@@ -157,6 +157,10 @@ endif
 PRODUCT_COPY_FILES += \
     $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml
 
+#Build DeviceParts
+PRODUCT_PACKAGES += \
+    DeviceSettings
+
 # common msm8960
 $(call inherit-product, device/samsung/msm8960-common/msm8960.mk)
 
