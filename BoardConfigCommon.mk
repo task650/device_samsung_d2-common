@@ -49,6 +49,7 @@ BOARD_USES_MMCUTILS := true
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_HAS_NO_MISC_PARTITION := true
 BOARD_HAS_NO_SELECT_BUTTON := true
+BOARD_RECOVERY_SWIPE := true
 TARGET_RECOVERY_FSTAB := device/samsung/d2-common/rootdir/etc/fstab.qcom
 
 TARGET_USERIMAGES_USE_EXT4 := true
@@ -79,22 +80,16 @@ BOARD_HAVE_DOCK_USBAUDIO := true
 #camera abi compatiblily
 TARGET_DISPLAY_INSECURE_MM_HEAP := true
 COMMON_GLOBAL_CFLAGS += -DQCOM_BSP_CAMERA_ABI_HACK
-TARGET_NEED_DISABLE_AUTOFOCUS := true
 ifeq ($(filter cm_apexqtmo cm_expressatt,$(TARGET_PRODUCT)),)
   TARGET_NEED_CAMERA_ZSL := true
   TARGET_ADD_ISO_MODE_1600 := true
+else
+  TARGET_NEED_DISABLE_AUTOFOCUS := true
 endif
 TARGET_NEED_DISABLE_FACE_DETECTION := true
 
-# Separate audio devices for VOIP
-BOARD_USES_SEPERATED_VOIP := true
-
-# Use device specific camera
-USE_DEVICE_SPECIFIC_CAMERA := true
-
-# Battery capacity path is not default 
-USE_DEVICE_SPECIFIC_LIBHEALTHD := true
-
-# VectorImpl Symbols required for legacy HALs
+# Needed for blobs
 COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
 
+# Separate audio devices for VOIP
+BOARD_USES_SEPERATED_VOIP := true
